@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Comptes coloc</title>
+    <script src="js/angular.min.js" charset="utf-8"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/style.css" media="screen" charset="utf-8">
+  </head>
+
+  <body>
+    <div ng-app="colocApp">
+<!-- add coloc -->
+    <div ng-controller="coloCtrl">
+
+    <form ng-submit="addColoc(coloc)"
+            name="colocForm"
+            novalidate>
+      <div class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+
+            <input class="form-control text-capitalize"
+                  type="text"
+                  name="colocName"
+                  placeholder="Nom du colocataire"
+                  ng-model="coloc.name"
+                  ng-required="true"
+            >
+          </div>
+        </div>
+        <button class="btn btn-primary"
+              type="submit"
+              name="button"
+              ng-model="addcoloc"
+              ng-disabled="colocForm.$invalid"
+              >Ajouter colocataire</button>
+      </div>
+    </form>
+<!-- add money -->
+
+    <form class="form-inline"
+            ng-submit="addMoney(selName,buy); addType(selName,type); total(colocIndex, buy)"
+            name="moneyForm"
+            novalidate>
+
+        <div class="form-group">
+          <select class="form-control text-capitalize"
+                  name="nameSelect"
+                  ng-model="selName"
+                  ng-required="true"
+                  >
+            <option ng-repeat="coloc in colocs"
+                    value="{{$index}}"
+                    >{{coloc.name}}
+
+            </option>
+
+          </select>
+          <select class="form-control text-capitalize"
+                 name="typeSelect"
+                 ng-options="item for item in types"
+                 ng-model="type"
+                 ng-required="true"
+                 >
+         </select>
+
+
+          <div class="input-group">
+
+
+
+            <input class="form-control"
+                  type="number"
+                  name="colocBuy"
+                  placeholder="Montant de la dépense"
+                  ng-model="buy"
+                  ng-pattern="/^[0-9]{1,7}$/"
+                  ng-required="true"
+                  >
+                  <div class="input-group-addon"><i class="fa fa-eur"></i></div>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-info"
+                  type="typeButton"
+                  name="typeButton"
+                    ng-click="divHide=true"
+                  >Nouveau type de dépense
+          </button>
+
+          <button class="btn btn-primary"
+                  type="submit"
+                  name="Moneybutton"
+                  ng-model="addcoloc"
+                  ng-disabled="moneyForm.$invalid"
+                  >Ajouter dépense
+          </button>
+
+        </div>
+
+
+
+    </form>
+    <form class="form-inline"
+        name="addTypeForm"
+        ng-show="divHide"
+        >
+
+      <input class="form-control"
+        type="text"
+        name="typeAddIn"
+        placeholder="Déco, mobilier..."
+        ng-model="typeAddIn"
+        ng-required="true"
+        >
+      <div class="btn btn-default"
+        type="typeAddButton"
+        name="typeAddButton"
+        ng-click="addNewType(); divHide=false"
+        ng-disabled="addTypeForm.typeAddIn.$invalid"
+        >Ajouter nouveau type de dépense
+      </div>
+
+    </form>
+
+    <!--<pre>{{somme}}</pre>-->
+    <!-- <pre>{{somme}}</pre> -->
+    <!--<pre>{{ types | json }}</pre>-->
+    <!--<pre>{{ colocs | json }}</pre>-->
+
+
+<!-- tableau -->
+        <div class="table-responsive">
+          <table class="table">
+          <thead>
+           <tr>
+             <th>Nom</th>
+             <th>Type de dépense</th>
+             <th>Dépenses</th>
+             <th>Total dépenses</th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr ng-repeat="colox in colocs track by $index" class="success">
+             <td class="text-capitalize">{{colox.name}}</td>
+             <td>
+               <ul>
+                 <li class="text-capitalize"
+                         ng-repeat="typ in colox.type track by $index">
+                  {{typ}}
+                 </li>
+               </ul>
+             </td>
+             <td>
+               <ul>
+                 <li class="text-capitalize"
+                         ng-repeat="dep in colox.buy track by $index">
+                  {{dep}}€
+                 </li>
+               </ul>
+             </td>
+             <td>{{totalDepense($index)}}€</td>
+           </tr>
+          </tbody>
+          </table>
+          </div>
+    </div>
+
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/angular.coloc.js" charset="utf-8"></script>
+  </body>
+</html>
