@@ -1,11 +1,33 @@
-.contentAll{
+body{
   min-width:2000px ;
+  background-color: rgba(139, 194, 221, 0.4);
+  background-image: url("../img/compta.jpg");
+  background-size: cover;
+
+}
+.bigger{
+  font-weight: bolder;
+  font-size: 2.5em;
+}
+.contentAll{
   display: flex;
   flex-direction: row;
   align-items: center;
   text-align: center;
 
 
+}
+h2,figcaption{
+  font-size: 35px;
+  margin-bottom: 20px;
+  color: #dc675f;
+  font-weight: lighter;
+}
+hr{
+  width: 25%;
+  height: 1px;
+  background-color: #dc675f;
+  margin-bottom: 20px;
 }
 .content-tab-form{
 
@@ -23,7 +45,7 @@ nav{
   width: 5%;
   height: 100vh;
   padding: 15px;
-  background-color: aqua;
+  background-color: #68AFEE;
   display: flex !important;
   flex-direction: row;
 
@@ -38,10 +60,12 @@ nav ul{
 }
 nav li{
  padding:15px;
+
+
 }
-nav li:hover{
-  background-color: white;
-}
+
+
+
 /*ul tab*/
 ul{
   list-style-type: none;
@@ -51,6 +75,59 @@ ul{
 
   display: inline-flex;
 }
+
 .add-type{
   margin-top: 20px;
+
+}
+table{
+  margin-left: 10px;
+}
+td{
+  text-align: start;
+}
+
+
+.hvr-rectangle-out {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  background: #68AFEE;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: .3s;
+  transition-duration: .3s
+}
+
+.hvr-rectangle-out:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #4995ee;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: .3s;
+  transition-duration: .3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out
+}
+.hvr-rectangle-out:active, .hvr-rectangle-out:focus, .hvr-rectangle-out:hover {
+  color: #fff
+}
+
+.hvr-rectangle-out:active:before, .hvr-rectangle-out:focus:before, .hvr-rectangle-out:hover:before {
+  -webkit-transform: scale(1);
+  transform: scale(1)
 }

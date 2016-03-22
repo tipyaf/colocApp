@@ -31,17 +31,18 @@
 
         <nav>
         <ul>
-            <li ng-click="name=true; dep=false; tab=false; divHide=false"><i class="fa fa-child fa-3x"></i></li>
-            <li ng-click="dep=true; name=false; tab=false; divHide=false"><i class="fa fa-cart-plus fa-3x"></i></li>
-            <li ng-click="dep=true; name=false; tab=false; divHide=true"><i class="fa fa-commenting fa-3x"></i></li>
-            <li ng-click="dep=false; name=false; tab=true; divHide=false"><i class="fa fa-table fa-3x"></i></li>
+            <li class="hvr-rectangle-out" ng-click="name=true; dep=false; tab=false; divHide=false"><i class="fa fa-child fa-3x"></i></li>
+            <li class="hvr-rectangle-out" ng-click="dep=true; name=false; tab=false; divHide=false"><i class="fa fa-cart-plus fa-3x"></i></li>
+            <li class="hvr-rectangle-out" ng-click="dep=true; name=false; tab=false; divHide=true"><i class="fa fa-commenting fa-3x"></i></li>
+            <li class="hvr-rectangle-out" ng-click="dep=false; name=false; tab=true; divHide=false"><i class="fa fa-table fa-3x"></i></li>
         </ul>
         </nav>
     <div class="content-tab-form">
         <div class="slide-left"
                 ng-if="name"
-                ng-hide="colocForm.$valid">
+                >
         <h2>Ajouter un colocataire</h2>
+            <hr>
         <form class="line"
                 ng-submit="addColoc(coloc)"
                 name="colocForm"
@@ -76,6 +77,7 @@
     <div class="slide-left"
         ng-if="dep">
         <h2>Ajouter des dépenses</h2>
+        <hr>
     <form class="line form-inline"
             ng-submit="addMoney(selName,buy); addType(selName,type); total(colocIndex, buy)"
             name="moneyForm"
@@ -169,6 +171,8 @@
 <!-- tableau -->
         <div class="table-responsive slide-right"
                 ng-if="tab">
+            <figcaption>Tableau des dépenses</figcaption>
+            <hr>
           <table class="table">
           <thead>
            <tr>
@@ -180,7 +184,7 @@
           </thead>
           <tbody >
            <tr ng-repeat="colox in colocs track by $index" class="success">
-             <td class="text-capitalize">{{colox.name}}</td>
+             <td class="text-capitalize bigger">{{colox.name}}</td>
              <td>
                <ul>
                  <li class="text-capitalize"
@@ -197,7 +201,7 @@
                  </li>
                </ul>
              </td>
-             <td>{{totalDepense($index)}}€</td>
+             <td class="bigger">{{totalDepense($index)}}€</td>
            </tr>
           </tbody>
           </table>
