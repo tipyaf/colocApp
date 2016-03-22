@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Comptes coloc</title>
-    <script src="js/angular.min.js" charset="utf-8"></script>
-    <!-- Bootstrap -->
+
+
+      <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -15,42 +16,67 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+      <link rel="stylesheet" href="css/ng-animation.css">
     <link rel="stylesheet" href="css/style.css" media="screen" charset="utf-8">
   </head>
 
   <body>
+
     <div ng-app="colocApp">
+
 <!-- add coloc -->
-    <div ng-controller="coloCtrl">
 
-    <form ng-submit="addColoc(coloc)"
-            name="colocForm"
-            novalidate>
-      <div class="form-inline">
-        <div class="form-group">
-          <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+    <div  ng-controller="coloCtrl">
+    <div class="contentAll">
 
-            <input class="form-control text-capitalize"
-                  type="text"
-                  name="colocName"
-                  placeholder="Nom du colocataire"
-                  ng-model="coloc.name"
-                  ng-required="true"
-            >
+        <nav>
+        <ul>
+            <li ng-click="name=true; dep=false; tab=false; divHide=false"><i class="fa fa-child fa-3x"></i></li>
+            <li ng-click="dep=true; name=false; tab=false; divHide=false"><i class="fa fa-cart-plus fa-3x"></i></li>
+            <li ng-click="dep=true; name=false; tab=false; divHide=true"><i class="fa fa-commenting fa-3x"></i></li>
+            <li ng-click="dep=false; name=false; tab=true; divHide=false"><i class="fa fa-table fa-3x"></i></li>
+        </ul>
+        </nav>
+    <div class="content-tab-form">
+        <div class="slide-left"
+                ng-if="name"
+                ng-hide="colocForm.$valid">
+        <h2>Ajouter un colocataire</h2>
+        <form class="line"
+                ng-submit="addColoc(coloc)"
+                name="colocForm"
+                novalidate>
+
+          <div class="form-inline">
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-child"></i></div>
+
+                <input class="form-control text-capitalize"
+                      type="text"
+                      name="colocName"
+                      placeholder="Nom du colocataire"
+                      ng-model="coloc.name"
+                      ng-required="true"
+                >
+              </div>
+            </div>
+            <button class="btn btn-primary"
+                  type="submit"
+                  name="button"
+                  ng-model="addcoloc"
+                  ng-disabled="colocForm.$invalid"
+                  >Ajouter colocataire</button>
+
           </div>
-        </div>
-        <button class="btn btn-primary"
-              type="submit"
-              name="button"
-              ng-model="addcoloc"
-              ng-disabled="colocForm.$invalid"
-              >Ajouter colocataire</button>
-      </div>
-    </form>
-<!-- add money -->
 
-    <form class="form-inline"
+        </form>
+        </div>
+<!-- add money -->
+    <div class="slide-left"
+        ng-if="dep">
+        <h2>Ajouter des dépenses</h2>
+    <form class="line form-inline"
             ng-submit="addMoney(selName,buy); addType(selName,type); total(colocIndex, buy)"
             name="moneyForm"
             novalidate>
@@ -92,13 +118,8 @@
                   <div class="input-group-addon"><i class="fa fa-eur"></i></div>
           </div>
         </div>
-        <div class="btn-group">
-          <button class="btn btn-info"
-                  type="typeButton"
-                  name="typeButton"
-                    ng-click="divHide=true"
-                  >Nouveau type de dépense
-          </button>
+
+
 
           <button class="btn btn-primary"
                   type="submit"
@@ -108,14 +129,18 @@
                   >Ajouter dépense
           </button>
 
-        </div>
+
 
 
 
     </form>
-    <form class="form-inline"
+    </div>
+        <div  class="add-type slide-down"
+              ng-if="divHide">
+
+     <form class="form-inline"
         name="addTypeForm"
-        ng-show="divHide"
+
         >
 
       <input class="form-control"
@@ -125,7 +150,7 @@
         ng-model="typeAddIn"
         ng-required="true"
         >
-      <div class="btn btn-default"
+      <div class="btn btn-warning"
         type="typeAddButton"
         name="typeAddButton"
         ng-click="addNewType(); divHide=false"
@@ -134,7 +159,7 @@
       </div>
 
     </form>
-
+    </div>
     <!--<pre>{{somme}}</pre>-->
     <!-- <pre>{{somme}}</pre> -->
     <!--<pre>{{ types | json }}</pre>-->
@@ -142,7 +167,8 @@
 
 
 <!-- tableau -->
-        <div class="table-responsive">
+        <div class="table-responsive slide-right"
+                ng-if="tab">
           <table class="table">
           <thead>
            <tr>
@@ -152,7 +178,7 @@
              <th>Total dépenses</th>
            </tr>
           </thead>
-          <tbody>
+          <tbody >
            <tr ng-repeat="colox in colocs track by $index" class="success">
              <td class="text-capitalize">{{colox.name}}</td>
              <td>
@@ -165,7 +191,7 @@
              </td>
              <td>
                <ul>
-                 <li class="text-capitalize"
+                 <li class="text-capitalize slide-left"
                          ng-repeat="dep in colox.buy track by $index">
                   {{dep}}€
                  </li>
@@ -175,7 +201,9 @@
            </tr>
           </tbody>
           </table>
+        </div>
           </div>
+    </div>
     </div>
 
 
@@ -185,6 +213,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js" charset="utf-8"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
     <script src="js/angular.coloc.js" charset="utf-8"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-var colocApp = angular.module('colocApp', []);
+var colocApp = angular.module('colocApp', ['ngAnimate']);
 
  colocApp.controller('coloCtrl', ['$scope', function($scope){
 
@@ -35,7 +35,7 @@ var colocApp = angular.module('colocApp', []);
     $scope.totalDepense = function(coloc){
       var somme= 0;
       var myColoc  = $scope.colocs[coloc];
-        //alert('yo');
+
 
       for (var prop in myColoc) {
 
