@@ -51,5 +51,6 @@ var colocApp = angular.module('colocApp', ['ngAnimate']);
         return somme;
 
     };
+
  //  buy: parseInt($scope.buy));
 }]);
