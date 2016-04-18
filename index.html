@@ -53,7 +53,7 @@
               <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-child"></i></div>
 
-                <input class="form-control text-capitalize"
+                <input class="form-control text-capitalize jhjh"
                       type="text"
                       name="colocName"
                       placeholder="Nom du colocataire"
@@ -147,15 +147,15 @@
 
       <input class="form-control"
         type="text"
-        name="typeAddIn"
+        name="typeAddInput"
         placeholder="Déco, mobilier..."
-        ng-model="typeAddIn"
+         ng-model="typeMe"
         ng-required="true"
         >
       <div class="btn btn-warning"
         type="typeAddButton"
         name="typeAddButton"
-        ng-click="addNewType(); divHide=false"
+        ng-click="addNewType(typeMe); divHide=false"
         ng-disabled="addTypeForm.typeAddIn.$invalid"
         >Ajouter nouveau type de dépense
       </div>
@@ -163,6 +163,8 @@
     </form>
     </div>
     <!--<pre>{{somme}}</pre>-->
+<!--<pre>{{types}}</pre>-->
+<!--<pre>{{typeMe}}</pre>-->
     <!-- <pre>{{somme}}</pre> -->
     <!--<pre>{{ types | json }}</pre>-->
     <!--<pre>{{ colocs | json }}</pre>-->
@@ -209,7 +211,6 @@
           </div>
     </div>
     </div>
-
 
     </div>
 
