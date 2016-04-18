@@ -15,8 +15,6 @@ var colocApp = angular.module('colocApp', ['ngAnimate']);
 
     $scope.addColoc = function (coloc){
     $scope.colocs.push(angular.copy(coloc));
-
-
      };
      $scope.addMoney = function (colocIndex, buy){
      $scope.colocs[colocIndex].buy.push(parseInt(buy));
@@ -26,9 +24,8 @@ var colocApp = angular.module('colocApp', ['ngAnimate']);
     $scope.colocs[colocTypeIndex].type.push(type);
    };
 
-
-    $scope.addNewType = function (types){
-      $scope.types.push($scope.typeAddIn);
+    $scope.addNewType = function (typeMe){
+      $scope.types.push(typeMe);
     };
 
 

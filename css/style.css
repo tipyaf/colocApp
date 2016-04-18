@@ -1,5 +1,5 @@
 body{
-  min-width:2000px ;
+  max-width:2000px ;
   background-color: rgba(139, 194, 221, 0.4);
   background-image: url("../img/compta.jpg");
   background-size: cover;
@@ -29,12 +29,7 @@ hr{
   background-color: #dc675f;
   margin-bottom: 20px;
 }
-.content-tab-form{
 
-  width: 60%;
-  display: inline;
-  flex-direction: row;
-}
 /*header{
   text-align: center;
   width:100%;
@@ -42,28 +37,46 @@ hr{
 
 }*/
 nav{
-  width: 5%;
-  height: 100vh;
-  padding: 15px;
-  background-color: #68AFEE;
-  display: flex !important;
-  flex-direction: row;
-
-
-  justify-content: space-between;
+      width: 15%;
+      height: 100vh;
+      padding: 15px;
+      background-color: #68AFEE;
+      display: flex !important;
+      flex-direction: row;
+    justify-content: space-between;
 }
 nav ul{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin-bottom: 35px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          margin: 2px auto;
 }
 nav li{
- padding:15px;
-color 
+    padding:15px;
+}
+nav li:after{
+    display:block;
+}
+nav li:first-child:after{
+    content: "Colocataires";
 
 }
+nav li:nth-child(2):after{
+    content: "Dépenses"
+}
+nav li:nth-child(3):after{
+    content: "Type de dépense"
+}
+nav li:nth-child(4):after {
+    content: "Tableau"
+}
 
+.content-tab-form{
+    width: 85%;
+    display: inline;
+    flex-direction: row;
+}
 
 
 /*ul tab*/
@@ -81,7 +94,7 @@ ul{
 
 }
 table{
-  margin-left: 10px;
+
 }
 td{
   text-align: start;
