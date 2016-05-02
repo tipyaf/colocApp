@@ -37,7 +37,7 @@
             <li class="hvr-rectangle-out" ng-click="dep=false; name=false; tab=true; divHide=false"><i class="fa fa-table fa-3x"></i></li>
         </ul>
         </nav>
-    <div class="content-tab-form">
+    <div class="content-tab-form pages">
         <div class="slide-left"
                 ng-if="name"
                 >
@@ -53,7 +53,7 @@
               <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-child"></i></div>
 
-                <input class="form-control text-capitalize jhjh"
+                <input class="form-control text-capitalize"
                       type="text"
                       name="colocName"
                       placeholder="Nom du colocataire"
@@ -72,9 +72,15 @@
           </div>
 
         </form>
+            <div class="message coloc-msg"
+                 ng-show="colocForm.$submitted && colocForm.$valid"
+            ><span class="text-capitalize">{{coloc.name}}</span> a été ajouté(e).
+
+            </div>
+
         </div>
 <!-- add money -->
-    <div class="slide-left"
+    <div class="slide-left pages"
         ng-if="dep">
         <h2>Ajouter des dépenses</h2>
         <hr>
@@ -136,12 +142,22 @@
 
 
     </form>
+
+
+        <div class="message money-msg"
+             ng-show="moneyForm.$submitted && moneyForm.$valid"
+                >La dépense a été ajoutée.
+
+        </div>
     </div>
-        <div  class="add-type slide-down"
+        <div  class="add-type slide-down pages"
               ng-if="divHide">
 
+            <h2>Type de dépense</h2>
+            
      <form class="form-inline"
         name="addTypeForm"
+        ng-submit="addNewType(typeMe); divHide=false"
 
         >
 
@@ -152,15 +168,19 @@
          ng-model="typeMe"
         ng-required="true"
         >
-      <div class="btn btn-warning"
-        type="typeAddButton"
+      <button class="btn btn-warning"
+        type="submit"
         name="typeAddButton"
-        ng-click="addNewType(typeMe); divHide=false"
-        ng-disabled="addTypeForm.typeAddIn.$invalid"
+          ng-disabled="addTypeForm.$invalid"
         >Ajouter nouveau type de dépense
-      </div>
+      </button>
+         <div class="message type-msg"
+              ng-show="addTypeForm.$submitted && addTypeForm.$valid"
+         >Le type de dépense ("<span class="text-capitalize">{{typeMe}}</span>") a été ajouté.
 
-    </form>
+         </div>
+     </form>
+
     </div>
     <!--<pre>{{somme}}</pre>-->
 <!--<pre>{{types}}</pre>-->

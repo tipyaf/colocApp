@@ -20,9 +20,7 @@ var colocApp = angular.module('colocApp', ['ngAnimate']);
      $scope.colocs[colocIndex].buy.push(parseInt(buy));
 
     };
-    $scope.addType = function (colocTypeIndex, type){
-    $scope.colocs[colocTypeIndex].type.push(type);
-   };
+
 
     $scope.addNewType = function (typeMe){
       $scope.types.push(typeMe);
