@@ -142,7 +142,7 @@
 
 
     </form>
-        <div class="message coloc-msg"
+        <div class="message money-msg"
              ng-show="moneyForm.$submitted && moneyForm.$valid"
                 >La dépense a été ajoutée.
 
@@ -153,6 +153,7 @@
 
      <form class="form-inline"
         name="addTypeForm"
+        ng-submit="addNewType(typeMe); divHide=false"
 
         >
 
@@ -163,20 +164,19 @@
          ng-model="typeMe"
         ng-required="true"
         >
-      <div class="btn btn-warning"
-        type="typeAddButton"
+      <button class="btn btn-warning"
+        type="submit"
         name="typeAddButton"
-        ng-click="addNewType(typeMe); divHide=false"
-        ng-disabled="addTypeForm.typeAddIn.$invalid"
+          ng-disabled="addTypeForm.$invalid"
         >Ajouter nouveau type de dépense
-      </div>
+      </button>
+         <div class="message type-msg"
+              ng-show="addTypeForm.$submitted && addTypeForm.$valid"
+         >Le type de dépense ("<span class="text-capitalize">{{typeMe}}</span>") a été ajouté.
 
-    </form>
-            <div class="message coloc-msg"
-                 ng-show="addTypeForm.$submitted && addTypeForm.$valid"
-            >Le type de dépense {{typeMe}} a été ajouté.
+         </div>
+     </form>
 
-            </div>
     </div>
     <!--<pre>{{somme}}</pre>-->
 <!--<pre>{{types}}</pre>-->
