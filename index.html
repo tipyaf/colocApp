@@ -37,7 +37,7 @@
             <li class="hvr-rectangle-out" ng-click="dep=false; name=false; tab=true; divHide=false"><i class="fa fa-table fa-3x"></i></li>
         </ul>
         </nav>
-    <div class="content-tab-form">
+    <div class="content-tab-form pages">
         <div class="slide-left"
                 ng-if="name"
                 >
@@ -80,7 +80,7 @@
 
         </div>
 <!-- add money -->
-    <div class="slide-left"
+    <div class="slide-left pages"
         ng-if="dep">
         <h2>Ajouter des dépenses</h2>
         <hr>
@@ -142,15 +142,19 @@
 
 
     </form>
+
+
         <div class="message money-msg"
              ng-show="moneyForm.$submitted && moneyForm.$valid"
                 >La dépense a été ajoutée.
 
         </div>
     </div>
-        <div  class="add-type slide-down"
+        <div  class="add-type slide-down pages"
               ng-if="divHide">
 
+            <h2>Type de dépense</h2>
+            
      <form class="form-inline"
         name="addTypeForm"
         ng-submit="addNewType(typeMe); divHide=false"

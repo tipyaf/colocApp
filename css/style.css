@@ -35,12 +35,7 @@ hr{
   display: inline;
   flex-direction: row;
 }
-/*header{
-  text-align: center;
-  width:100%;
-  display: inline !important;
 
-}*/
 nav{
   width: 5%;
   height: 100vh;
@@ -128,4 +123,18 @@ td{
 .hvr-rectangle-out:active:before, .hvr-rectangle-out:focus:before, .hvr-rectangle-out:hover:before {
   -webkit-transform: scale(1);
   transform: scale(1)
+}
+
+.pages{
+  min-height:250px;
+}
+.message{
+  color: #4995ee;
+  padding: 10px;
+  margin-top: 15px;
+  margin-left: 40%;
+  margin-right: 40%;
+  border: 1px solid #4995ee;
+  border-radius: 15px;
+
 }
