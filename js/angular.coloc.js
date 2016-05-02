@@ -27,8 +27,8 @@ var colocApp = angular.module('colocApp', ['ngAnimate']);
    };
 
 
-    $scope.addNewType = function (types){
-      $scope.types.push($scope.typeAddIn);
+    $scope.addNewType = function (typeMe){
+      $scope.types.push(typeMe);
     };
 
 
